@@ -1,0 +1,15 @@
+{
+  "name": "conf-compare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clean-conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "deep-diff": "^1.0.2",
+    "node-json2html": "^1.4.0"
+  }
+}
