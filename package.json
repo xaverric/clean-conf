@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "deep-diff": "^1.0.2",
+    "sorted-json": "^0.2.6",
     "node-json2html": "^1.4.0"
   }
 }
