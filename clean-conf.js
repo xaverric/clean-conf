@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const sortedJSON = require('sorted-json');
 
-const KEYS_FOR_REMOVAL = ["sys", "id"];
+const KEYS_FOR_REMOVAL = ["sys", "id", "awid"];
 
 const cleanConf = (dirPath) => {
 	updateFiles(getFiles(dirPath));
