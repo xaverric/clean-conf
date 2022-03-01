@@ -3,7 +3,7 @@
 Tool for cleaning and comparing configuration files.
 
 ## Features
-* Cleans configuration files from unwanted attributes like ```sys``` and ```id```. 
+* Cleans configuration files from unwanted attributes like ```sys``` and ```id``` and ```awid```. 
 * Sorts all configuration files alphabetically.
 * Compares all configuration files and prints result into the readable html page form.
 
