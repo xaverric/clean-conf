@@ -18,11 +18,23 @@ const updateFile = (filePath) => {
     let data = JSON.parse(fs.readFileSync(filePath));
     removeAttr(data);
 
-    data = sortedJSON.sortify(data, {sortBy: (a, b) => {
-    	return (a.code > b.code) ? 1 : -1;
-    }});
+    // sort object fields
+    data = sortedJSON.sortify(data, {sortBy: sortFunction});
+    // sort array
+    data = Array.isArray(data) ? data.sort(sortFunction) : data;
+    // sort nested arrays - depth 1
+    Object.keys(data).forEach(key => {
+        data[key] = Array.isArray(data[key]) ? data[key].sort(sortFunction) : data[key];
+    })
 
     fs.writeFileSync(`${filePath}`, JSON.stringify(data, null, 4));
+}
+
+const sortFunction = (a, b) => {
+    let result = 0;
+    result = a.code || b.code ? (a.code > b.code) ? 1 : -1 : 0;
+    result = a.eic || b.eic ? (a.eic > b.eic) ? 1 : -1 : result;
+    return result;
 }
 
 const removeAttr = (data) => {
