@@ -2,7 +2,6 @@
   "name": "conf-compare",
   "version": "1.0.0",
   "description": "",
-  "main": "clean-conf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +9,9 @@
   "license": "ISC",
   "dependencies": {
     "deep-diff": "^1.0.2",
-    "sorted-json": "^0.2.6",
-    "node-json2html": "^1.4.0"
+    "js-yaml": "^4.1.0",
+    "json-diff": "^0.7.3",
+    "node-json2html": "^1.4.0",
+    "sorted-json": "^0.2.6"
   }
 }

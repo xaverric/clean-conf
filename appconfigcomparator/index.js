@@ -52,7 +52,6 @@ const readFile = (filePath) => {
 const main = () => {
 	cleanConf(lhsDir);
 	cleanConf(rhsDir);
-
 	compareConfig(lhsDir, rhsDir, reportDir);
 }
 
