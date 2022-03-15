@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const sortedJSON = require('sorted-json');
 
-const KEYS_FOR_REMOVAL = ["sys", "id", "awid"];
+const KEYS_FOR_REMOVAL = ["sys", "id", "awid", "revisionNumber", "version"];
 
 const cleanConf = (dirPath) => {
 	updateFiles(getFiles(dirPath));
@@ -21,10 +21,10 @@ const updateFile = (filePath) => {
     // sort object fields
     data = sortedJSON.sortify(data, {sortBy: sortFunction});
     // sort array
-    data = Array.isArray(data) ? data.sort(sortFunction) : data;
+    data = Array.isArray(data) ? data.sort(sortFunction) : sortAttributesInside(data);
     // sort nested arrays - depth 1
     Object.keys(data).forEach(key => {
-        data[key] = Array.isArray(data[key]) ? data[key].sort(sortFunction) : data[key];
+        data[key] = Array.isArray(data[key]) ? data[key].sort(sortFunction) : sortAttributesInside(data[key]);
     })
 
     fs.writeFileSync(`${filePath}`, JSON.stringify(data, null, 4));
@@ -34,7 +34,12 @@ const sortFunction = (a, b) => {
     let result = 0;
     result = a.code || b.code ? (a.code > b.code) ? 1 : -1 : 0;
     result = a.eic || b.eic ? (a.eic > b.eic) ? 1 : -1 : result;
+    result = a.coId || b.coId ? (a.coId > b.coId) ? 1 : -1 : result; // sort contingencies
     return result;
+}
+
+const sortAttributesInside = object => {
+    return Object.fromEntries(Object.entries(object).sort());
 }
 
 const removeAttr = (data) => {
