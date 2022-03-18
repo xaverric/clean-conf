@@ -19,7 +19,7 @@ const updateFile = (filePath) => {
     removeAttr(data);
 
     // sort object fields
-    data = sortedJSON.sortify(data, {sortBy: sortFunction});
+    data = sortedJSON.sortify(data, {sortKey: true, sortArray: true});
     // sort array
     data = Array.isArray(data) ? data.sort(sortFunction) : sortAttributesInside(data);
     // sort nested arrays - depth 1
