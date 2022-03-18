@@ -38,8 +38,16 @@ const sortFunction = (a, b) => {
     return result;
 }
 
+/**
+ * try to sort object if it is object
+ * @param object
+ * @returns {{[p: string]: unknown}|*}
+ */
 const sortAttributesInside = object => {
-    return Object.fromEntries(Object.entries(object).sort());
+    if (typeof object === 'object' && !Array.isArray(object) && object !== null){
+        return Object.fromEntries(Object.entries(object).sort());
+    }
+    return object;
 }
 
 const removeAttr = (data) => {
