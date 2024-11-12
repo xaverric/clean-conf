@@ -10,7 +10,7 @@ const fs = require('fs');
 const readConfigMap = (path) => {
   try {
     const doc = yaml.load(fs.readFileSync(path));
-    return JSON.parse(doc.data.SERVER_CFG);
+    return JSON.parse(doc.data.stringifiedConfigurationMap);
   } catch (e) {
     console.log(e);
   }

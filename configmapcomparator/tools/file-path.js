@@ -8,7 +8,7 @@ const path = require('path');
  * @returns {string}
  */
 const getFiles = (dirPath) => {
-  return fs.readdirSync(dirPath).map(fileName => `${dirPath}${path.sep}${fileName}`);
+  return fs.readdirSync(dirPath).map(fileName => `${dirPath}${path.sep}${fileName}`).filter(item => !item.includes(".DS_Store"))
 };
 
 /**
